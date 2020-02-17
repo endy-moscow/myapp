@@ -6,32 +6,50 @@ export default class ModalLauncher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      modalMode: null // 'modal1' 'modal2'
     };
   }
+ 
+ openModal(id) {
+    this.setState({ modalMode: id });
+  }
 
-  handleToggleModal() {
-    this.setState({ showModal: !this.state.showModal });
+  closeModal() {
+    this.setState({ modalMode: null });
   }
 
   render() {
 
-    const { buttonLabel, children, classes } = this.props;
-    const { showModal } = this.state;
-
+    const { buttonLabel, children } = this.props;
+    const { modalMode } = this.state;
+    
     return (
       <div>
         <button
           type="button"
           className="modal-button"
-          onClick={() => this.handleToggleModal(1)}
+          onClick={() => this.openModal('modal1')}
         >
           {buttonLabel}
         </button>
 
-        {showModal && (
-          <Modal onCloseRequest={() => this.handleToggleModal()}>
-            {children} 23232
+        <button
+          type="button"
+          className="modal-button"
+          onClick={() => this.openModal('modal2')}
+        >
+          {buttonLabel}
+        </button>
+
+        {modalMode === 'modal1' && (
+          <Modal onCloseRequest={() => this.closeModal()}>
+            {children} modal1
+          </Modal>
+        )}
+
+        {modalMode === 'modal2' && (
+          <Modal onCloseRequest={() => this.closeModal()}>
+            {children} modal2
           </Modal>
         )}
       </div>
