@@ -6,7 +6,7 @@ export default class ModalLauncher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalMode: null // 'modal1' 'modal2'
+      modalMode: null
     };
   }
  
@@ -20,36 +20,27 @@ export default class ModalLauncher extends Component {
 
   render() {
 
-    const { buttonLabel, children } = this.props;
+    const { 
+      buttonLabel, 
+      children, 
+      modalId,
+      modalClass,
+    } = this.props;
     const { modalMode } = this.state;
     
     return (
       <div>
         <button
           type="button"
-          className="modal-button"
-          onClick={() => this.openModal('modal1')}
+          className={modalClass}
+          onClick={() => this.openModal(modalId)}
         >
           {buttonLabel}
         </button>
 
-        <button
-          type="button"
-          className="modal-button"
-          onClick={() => this.openModal('modal2')}
-        >
-          {buttonLabel}
-        </button>
-
-        {modalMode === 'modal1' && (
+        {modalMode === modalId && (
           <Modal onCloseRequest={() => this.closeModal()}>
-            {children} modal1
-          </Modal>
-        )}
-
-        {modalMode === 'modal2' && (
-          <Modal onCloseRequest={() => this.closeModal()}>
-            {children} modal2
+            {children} {modalId}
           </Modal>
         )}
       </div>
