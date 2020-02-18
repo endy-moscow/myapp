@@ -59,8 +59,7 @@ export default class Modal extends Component {
           type="button"
           className='close-button'
           onClick={onCloseRequest}
-        >
-        </button>
+        />
       </div>
     )
   }

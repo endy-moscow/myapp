@@ -59,6 +59,7 @@ body {
     outline: 0;
     box-shadow: (0, 0, 0.625rem, rgba(0, 0, 0, 0.2));
 }
+
 .close-button:before, .close-button:after {
     content: "";
     position: absolute;

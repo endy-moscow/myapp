@@ -12,7 +12,11 @@ let projects = [
 function App() {
   const tiles = projects.map((project) =>
     <section>
-      <ModalLauncher modalId={project.name} modalClass={project.modalClass} buttonLabel={project.name}/>
+      <ModalLauncher 
+        modalId={project.name} 
+        modalLauncherClass={project.modalClass} 
+        modalLauncherLabel={project.name}
+      />
     </section>
   );
   return (

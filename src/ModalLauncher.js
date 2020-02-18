@@ -21,22 +21,21 @@ export default class ModalLauncher extends Component {
   render() {
 
     const { 
-      buttonLabel, 
-      children, 
+      modalLauncherLabel,
+      children,
       modalId,
-      modalClass,
+      modalLauncherClass,
     } = this.props;
     const { modalMode } = this.state;
     
     return (
-      <div>
-        <button
-          type="button"
-          className={modalClass}
+      <div> 
+        <div
+          className={modalLauncherClass}
           onClick={() => this.openModal(modalId)}
         >
-          {buttonLabel}
-        </button>
+          {modalLauncherLabel}
+        </div>
 
         {modalMode === modalId && (
           <Modal onCloseRequest={() => this.closeModal()}>
