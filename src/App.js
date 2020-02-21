@@ -1,27 +1,21 @@
 import React, { Children } from 'react'
 import './App.css'
-import ModalLauncher from './ModalLauncher'
-
-let projects = [
-  {name:"Ivan", desc: "descriptionIvan", modal: "modalIvan", modalClass: "modal-button"},
-  {name:"Sergey", desc: "descriptionSergey", modal: "modalSergey", modalClass: "modal-button"},
-  {name:"Roman", desc: "descriptionRoman", modal: "modalRoman", modalClass: "modal-button"}
-]
-
+import ModalLauncher from './components/modal/ModalLauncher'
+import projects from './data/projects.js'
 
 function App() {
-  const tiles = projects.map((project) =>
-    <section>
-      <ModalLauncher 
-        modalId={project.name} 
-        modalLauncherClass={project.modalClass} 
-        modalLauncherLabel={project.name}
-      />
-    </section>
-  );
   return (
     <div className="App">
-      {tiles}
+      {projects.map((project) =>
+        <section>
+          <ModalLauncher 
+            modalId={project.id} 
+            project={project}
+            modalLauncherClass={project.modalClass} 
+            modalLauncherLabel={project.name}
+          />
+        </section>
+      )}
     </div>
   )
 }

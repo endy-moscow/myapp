@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "./Modal";
 import "./ModalLauncher.css"
 
+
 export default class ModalLauncher extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,6 @@ export default class ModalLauncher extends Component {
 
     const { 
       modalLauncherLabel,
-      children,
       modalId,
       modalLauncherClass,
     } = this.props;
@@ -38,8 +38,8 @@ export default class ModalLauncher extends Component {
         </div>
 
         {modalMode === modalId && (
-          <Modal onCloseRequest={() => this.closeModal()}>
-            {children} {modalId}
+          <Modal onCloseRequest={() => this.closeModal()} modalID={modalMode}>
+            {modalId} 
           </Modal>
         )}
       </div>
